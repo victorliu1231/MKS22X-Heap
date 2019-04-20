@@ -42,5 +42,34 @@ public class MyHeap{
     // - push the element at index i up into the correct position. This will swap it with the parent node until the parent node is larger or the root is reached. [ should be O(logn) ]
     // - precondition: index is between 0 and data.length-1 inclusive.
 
-    
+    public static void heapify(int[] data){
+        int endOfPenultimateRow = calculate(data.length) - 1;
+        for (int i = endOfPenultimateRow; i >= 0; i--){
+            pushDown(data, data.length, i);
+        }
+    }
+    //- convert the array into a valid heap. [ should be O(n) ]
+
+    public static void heapsort(int[] data){
+        heapify(data);
+        for (int i = data.length-1; i > 0; i--){
+            swap(data, 0, i);
+            pushDown(data, i, 0);
+        }
+    }
+    //- sort the array by converting it into a heap then removing the largest value n-1 times. [ should be O(nlogn) ]
+
+    private static void swap(int[] data, int a, int b){
+        int storer = data[a];
+        data[a] = data[b];
+        data[b] = storer;
+    }
+
+    private static int calculate(int length){
+        int n = 0;
+        while (Math.pow(2,n) - 1 <= length){
+            n++;
+        }
+        return (int)(Math.pow(2,n-1) - 1);
+    }
 }
