@@ -42,6 +42,8 @@ public class MyHeap{
     // - push the element at index i up into the correct position. This will swap it with the parent node until the parent node is larger or the root is reached. [ should be O(logn) ]
     // - precondition: index is between 0 and data.length-1 inclusive.
 
+
+    //verified that this is O(n)
     public static void heapify(int[] data){
         int endOfPenultimateRow = calculate(data.length) - 1;
         for (int i = endOfPenultimateRow; i >= 0; i--){
@@ -50,6 +52,7 @@ public class MyHeap{
     }
     //- convert the array into a valid heap. [ should be O(n) ]
 
+    //SLOWER THAN MERGESORT????
     public static void heapsort(int[] data){
         heapify(data);
         for (int i = data.length-1; i > 0; i--){
